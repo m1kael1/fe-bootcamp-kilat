@@ -7,16 +7,22 @@ import SignUpPage from './pages/sign-up.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ROUTES } from './utils/constants.ts';
+<<<<<<< Updated upstream
+=======
+import SignUpPage from './pages/sign-up.tsx';
+import ProtectedRoute from './components/protected.tsx';
+import { AuthProvider } from './context/auth-context.tsx';
+>>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
     element: (
-      // <ProtectedRoute>
-      //   <AuthProvider>
-      <App />
-      //   </AuthProvider>
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ProtectedRoute>
     ),
   },
   {
@@ -25,7 +31,8 @@ const router = createBrowserRouter([
   },
   {
     path: ROUTES.LOGIN,
-    element: <SignInPage />,
+    element: <SignInPage />
+
   }
 ]);
 

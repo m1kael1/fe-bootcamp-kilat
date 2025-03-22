@@ -13,10 +13,12 @@ export const noteFormSchema = z.object({
 
 export type NoteFormType = z.infer<typeof noteFormSchema>;
 
-export const signInFormSchema = z.object({
+export const signInFormSchema = z.object(
+  {
   email: z.string().email(),
   password: z.string().min(6, "Password must be at least 6 characters long"),
-});
+}
+);
 
 export type SignInFormType = z.infer<typeof signInFormSchema>;
 

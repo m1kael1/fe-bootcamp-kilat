@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { CirclePlus } from "lucide-react";
+import { useAuth } from "../hooks/use-auth";
+import Show from "./show";
+import Button from "./ui/Button";
+import ModalContainer from "./ui/ModalContainer";
+import CreateNoteFom from "./form/CreateNoteForm";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { userEmail, logout } = useAuth();
 
   const handleOpenModal = () => {
     setIsOpen(!isOpen);
@@ -20,8 +26,35 @@ const Header = () => {
             }`}
           onClick={handleOpenModal}
         />
+        <div className="w-full flex justify-end mx-4 mb-2">
+          <Show
+            when={!!userEmail}
+            fallback={
+              <p>
+                Please login to see your notes
+              </p>
+            }>
+            <div className="flex items-center gap-4">
+              <span className="font-bold text-lg">{userEmail}</span>
+              <Button
+                onClick={logout}
+                className="bg-red-500 text-white"
+              >
+                Logout
+              </Button>
+            </div>
+          </Show>
+        </div>
       </div>
       <hr className='border-3 relative z-100' />
+
+      <ModalContainer
+        className="-mt-1 max-w-sm absolute"
+        isOpen={isOpen}
+        setOpen={setIsOpen}
+      >
+        <CreateNoteFom />
+      </ModalContainer>
     </div>
   );
 };
