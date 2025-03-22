@@ -41,7 +41,6 @@ const SignInForm = () => {
         errors={errors}
         register={register}
       />
-
       <InputField
         label='Password'
         name='password'
@@ -50,7 +49,6 @@ const SignInForm = () => {
         errors={errors}
         register={register}
       />
-
       <Show when={isError}>
         <p className="text-red-500 text-md font-medium">
           {error?.message}
