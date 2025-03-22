@@ -1,17 +1,8 @@
-<<<<<<< Updated upstream
-import { useEffect, } from "react";
-import { useNavigate } from "react-router-dom";
-import { LS_TOKEN } from "../utils/constants";
-
-import SignInForm from "../components/form/SignInForm";
-
-=======
 import { useNavigate } from "react-router-dom";
 import SignInForm from "../components/form/SignInForm";
 import { useEffect } from "react";
 import { LS_TOKEN } from "../utils/constants";
 
->>>>>>> Stashed changes
 const SignInPage = () => {
 
   const navigate = useNavigate();
